@@ -28,7 +28,11 @@ namespace Accounting
         public void Deposit(double amount)
         {
             //Add missing part here!
-            Balance += amount;
+            if (amount > 0)
+            {
+                Balance += amount;
+            }
+            
         }
 
         public double Withdraw(double amount)
