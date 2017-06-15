@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Accounting
+{
+    public class NotEnoughFunds : Exception
+    {        
+        public NotEnoughFunds(string message) : base(message) { }
+    }
+
+    public class Account
+    {
+        public double Balance { get; set; }
+
+        public void Deposit(double amount)
+        {
+            Balance += amount;
+        }
+
+        public double Withdraw(double amount)
+        {
+            if (amount > Balance)
+            {
+                throw new NotEnoughFunds($"Balance is only {Balance}$");
+            }
+            Balance -= amount;
+            return amount;
+        }
+    }
+}
