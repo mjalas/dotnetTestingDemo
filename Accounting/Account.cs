@@ -11,6 +11,11 @@ namespace Accounting
         public NotEnoughFunds(string message) : base(message) { }
     }
 
+    public class NegativeAmount : Exception
+    {
+        public NegativeAmount(string message) : base(message) { }
+    }
+
     public class Account
     {
         public double Balance { get; set; }
@@ -27,12 +32,11 @@ namespace Accounting
 
         public void Deposit(double amount)
         {
-            //Add missing part here!
-            if (amount > 0)
+            if (amount < 0)
             {
-                Balance += amount;
+                throw new NegativeAmount($"Given amount: {amount}");
             }
-            
+            Balance += amount;
         }
 
         public double Withdraw(double amount)
