@@ -15,8 +15,19 @@ namespace Accounting
     {
         public double Balance { get; set; }
 
+        public Account()
+        {
+            Balance = 0.0;
+        }
+
+        public Account(double initialAmount)
+        {
+            Balance = initialAmount;
+        }
+
         public void Deposit(double amount)
         {
+            //Add missing part here!
             Balance += amount;
         }
 
